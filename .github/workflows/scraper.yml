@@ -64,3 +64,18 @@ jobs:
           bizbuysell_florida_data.csv
           bizbuysell_florida_data.json
         retention-days: 30
+    - name: Check if files were created
+      run: |
+        echo "Files in current directory:"
+        ls -la
+        echo "---"
+        echo "Looking for CSV/JSON files:"
+        find . -name "*.csv" -o -name "*.json"
+        echo "---"
+        echo "File bizbuysell_florida_data.csv exists?"
+        if [ -f "bizbuysell_florida_data.csv" ]; then
+          echo "YES - CSV exists"
+          wc -l bizbuysell_florida_data.csv
+        else
+          echo "NO - CSV not found"
+        fi
