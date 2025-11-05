@@ -1,0 +1,14 @@
+{
+  "selected_counties": [
+    "miami-dade",
+    "broward",
+    "palm-beach",
+    "hillsborough",
+    "orange"
+  ],
+  "excluded_categories": [
+    "Food & Beverage / Restaurant",
+    "Retail / Brick & Mortar"
+  ],
+  "max_pages_per_county": 5
+}
