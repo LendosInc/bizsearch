@@ -1,0 +1,59 @@
+name: BizBuySell Florida Scraper
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install playwright asyncio
+        playwright install chromium
+        playwright install-deps
+        
+    - name: Run scraper
+      run: |
+        python scraper.py
+        
+    - name: Commit results
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add -A
+        git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update: $(date +'%Y-%m-%d %H:%M:%S')"
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+        
+    - name: Upload CSV artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: scraped-data
+        path: |
+          bizbuysell_florida_data.csv
+          bizbuysell_florida_data.json
+        retention-days: 30
+
+    - name: Send notification
+      if: success()
+      run: |
+        echo "✅ Scraping completed successfully!"
