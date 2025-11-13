@@ -14,8 +14,8 @@
     "region": "south_florida",
     "sourceUrl": "https://www.bizbuysell.com/test-1",
     "source": "BizBuySell",
-    "foundDate": "2025-11-12",
-    "lastModified": "2025-11-12"
+    "foundDate": "2025-11-13",
+    "lastModified": "2025-11-13"
   },
   {
     "id": "test_2",
@@ -32,8 +32,8 @@
     "region": "central_florida",
     "sourceUrl": "https://www.bizbuysell.com/test-2",
     "source": "BizBuySell",
-    "foundDate": "2025-11-12",
-    "lastModified": "2025-11-12"
+    "foundDate": "2025-11-13",
+    "lastModified": "2025-11-13"
   },
   {
     "id": "test_3",
@@ -50,7 +50,7 @@
     "region": "south_florida",
     "sourceUrl": "https://www.bizbuysell.com/test-3",
     "source": "BizBuySell",
-    "foundDate": "2025-11-12",
-    "lastModified": "2025-11-12"
+    "foundDate": "2025-11-13",
+    "lastModified": "2025-11-13"
   }
 ]
